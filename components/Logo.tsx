@@ -17,8 +17,8 @@ export default function Logo() {
 
 const styles = StyleSheet.create({
   image: {
-    height: 178,
-    width: 290,
+    maxHeight: 178,
+    maxWidth: 290,
     resizeMode: "contain",
   },
 });

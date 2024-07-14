@@ -7,9 +7,9 @@ const DetailsList = ({ data }: { data: object }) => {
 
   return (
     <DataTable>
-      {headerValues.map((v, i) => {
-        if (v.toLocaleLowerCase().includes("image")) return;
-
+      {headerValues.map((value, i) => {
+        const lowerCaseStringValue = value.toLocaleLowerCase();
+        if (lowerCaseStringValue.includes("image")) return;
         let cell;
         switch (typeof rowValues[i]) {
           case "number":
@@ -19,6 +19,9 @@ const DetailsList = ({ data }: { data: object }) => {
               </DataTable.Cell>
             );
             break;
+          case "string":
+            if (lowerCaseStringValue.includes("pass"))
+              rowValues[i] = "xxxxxxxxxxx";
           default:
             cell = (
               <DataTable.Cell key={"${i}-generic"}>
@@ -30,7 +33,7 @@ const DetailsList = ({ data }: { data: object }) => {
 
         return (
           <DataTable.Row key={i}>
-            <DataTable.Title>{v}</DataTable.Title>
+            <DataTable.Title>{value}</DataTable.Title>
             {cell}
           </DataTable.Row>
         );

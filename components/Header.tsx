@@ -9,8 +9,8 @@ const Header = () => {
   return (
     <ThemedView style={styles.container}>
       <Logo />
-      <View style={styles.container}>
-        <ProfileButton  />
+      <View style={styles.rightView}>
+        <ProfileButton />
         <LanguagePicker />
       </View>
     </ThemedView>
@@ -19,7 +19,7 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // height: "25%",
+    // maxHeight: 100,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",

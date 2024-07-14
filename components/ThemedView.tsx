@@ -19,6 +19,9 @@ export function ThemedView({
   );
 
   return (
-    <View style={[{ backgroundColor, padding: 20 }, style]} {...otherProps} />
+    <View
+      style={[{ backgroundColor, padding: 20, flex: 1 }, style]}
+      {...otherProps}
+    />
   );
 }

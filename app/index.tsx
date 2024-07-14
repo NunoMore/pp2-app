@@ -1,5 +1,6 @@
 import DisplayCard, { DisplayCardProps } from "@/components/DisplayCard";
 import { ThemedText } from "@/components/ThemedText";
+import { ThemedView } from "@/components/ThemedView";
 import { FlatList, ScrollView, StyleSheet } from "react-native";
 
 export default function Home() {
@@ -32,39 +33,48 @@ export default function Home() {
   ];
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false} style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={({ item: { title, subtitle, imageUrl } }) => (
-          <DisplayCard title={title} imageUrl={imageUrl} subtitle={subtitle} />
-        )}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      />
-      <ThemedText>another one</ThemedText>
-      <FlatList
-        data={data}
-        renderItem={({ item: { title, subtitle, imageUrl } }) => (
-          <DisplayCard title={title} imageUrl={imageUrl} subtitle={subtitle} />
-        )}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      />
-      <FlatList
-        data={data}
-        renderItem={({ item: { title, subtitle, imageUrl } }) => (
-          <DisplayCard title={title} imageUrl={imageUrl} subtitle={subtitle} />
-        )}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      />
-    </ScrollView>
+    <ThemedView>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <FlatList
+          data={data}
+          renderItem={({ item: { title, subtitle, imageUrl } }) => (
+            <DisplayCard
+              title={title}
+              imageUrl={imageUrl}
+              subtitle={subtitle}
+            />
+          )}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
+        <ThemedText>another one</ThemedText>
+        <FlatList
+          data={data}
+          renderItem={({ item: { title, subtitle, imageUrl } }) => (
+            <DisplayCard
+              title={title}
+              imageUrl={imageUrl}
+              subtitle={subtitle}
+            />
+          )}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
+        <FlatList
+          data={data}
+          renderItem={({ item: { title, subtitle, imageUrl } }) => (
+            <DisplayCard
+              title={title}
+              imageUrl={imageUrl}
+              subtitle={subtitle}
+            />
+          )}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
+      </ScrollView>
+    </ThemedView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex:1,
-    padding: 20,
-  },
-});
+const styles = StyleSheet.create({});

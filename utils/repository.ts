@@ -1,16 +1,8 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Platform } from "react-native";
 import { sendAlert } from "./utils";
 
 const Repo = {
   create: async (key: string, data: object | string | any[]) => {
-    // const dataString: string =
-    //   typeof data === "string" ? data : JSON.stringify(data);
-
-    // if (Platform.OS === "web") {
-    //   window.localStorage.setItem(key, dataString);
-    // }
-
     try {
       const jsonValue = JSON.stringify(data);
       await AsyncStorage.setItem(key, jsonValue);
@@ -22,11 +14,6 @@ const Repo = {
     return Repo.read(key);
   },
   read: async (key: string) => {
-    // if (Platform.OS === "web") {
-    //   const value = window.localStorage.getItem(key);
-    //   return !value ? undefined : JSON.parse(value);
-    // }
-
     try {
       const jsonValue = await AsyncStorage.getItem(key);
       return !jsonValue ? undefined : JSON.parse(jsonValue);
@@ -35,14 +22,9 @@ const Repo = {
     }
   },
   update: (key: string, data: Object | string | any[]) => {
-    Repo.delete(key);
-    return Repo.create(key, data);
+    return Promise.resolve(Repo.delete(key)).then(() => Repo.create(key, data));
   },
   delete: async (key: string) => {
-    // if (Platform.OS === "web") {
-    //   window.localStorage.removeItem(key);
-    // }
-
     try {
       await AsyncStorage.removeItem(key);
     } catch (e: any) {
