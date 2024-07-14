@@ -5,6 +5,7 @@
 
 const tintColorLight = "#0a7ea4";
 const tintColorDark = "#fff";
+const backgroundTransparentColor = "rgba(149, 0, 77, 0.50)";
 
 export const Colors = {
   lightTheme: {
@@ -15,7 +16,7 @@ export const Colors = {
       border: "rgb(216, 216, 216)",
       notification: "rgb(255, 59, 48)",
       text: "#11181C",
-      background: "rgba(149, 0, 77, 0.54)",
+      background: backgroundTransparentColor,
       tint: tintColorLight,
       icon: "#687076",
       tabIconDefault: "#687076",
@@ -30,7 +31,7 @@ export const Colors = {
       border: "rgb(39, 39, 41)",
       notification: "rgb(255, 69, 58)",
       text: "#ECEDEE",
-      background: "#290827",
+      background: backgroundTransparentColor,
       tint: tintColorDark,
       icon: "#9BA1A6",
       tabIconDefault: "#9BA1A6",

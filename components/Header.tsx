@@ -19,6 +19,7 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: "#290827",
     flex: 1,
     maxHeight: 100,
     flexDirection: "row",

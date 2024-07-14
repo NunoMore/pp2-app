@@ -1,11 +1,7 @@
+import { Colors } from "@/constants/Colors";
 import React from "react";
-import {
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  View,
-  Dimensions,
-} from "react-native";
+import { Text, TouchableOpacity, StyleSheet, View } from "react-native";
+import { ThemedText } from "../ThemedText";
 
 export interface QuickNavItemProps {
   title: string;
@@ -16,7 +12,7 @@ const QuickNavItem: React.FC<QuickNavItemProps> = ({ title, onPress }) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Text style={styles.buttonText}>{title}</Text>
+        <ThemedText style={styles.buttonText}>{title}</ThemedText>
       </TouchableOpacity>
     </View>
   );
@@ -27,14 +23,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-    backgroundColor: "grey", // Semi-transparent white background
     paddingHorizontal: 16,
     paddingVertical: 8,
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+
+    // Border styles
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.1)",
     borderRadius: 100, // Round button corners
-    shadowColor: "silver", // Shadow color (black)
-    shadowOffset: { width: 2, height: 2 }, // Shadow offset
-    shadowOpacity: 0.1, // Shadow opacity
-    shadowRadius: 2, // Shadow blur radius
+
+    // Shadow (iOS only)
+    shadowColor: "rgba(0, 0, 0, 0.1)",
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
   },
   buttonText: {
     fontSize: 16,

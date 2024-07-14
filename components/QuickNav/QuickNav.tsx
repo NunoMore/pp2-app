@@ -4,11 +4,11 @@ import QuickNavItem, { QuickNavItemProps } from "./QuickNavItem";
 
 const QuickNav = ({ data }: { data: QuickNavItemProps[] }) => {
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={data}
         horizontal
-        ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
         renderItem={(item) => (
@@ -23,6 +23,13 @@ const QuickNav = ({ data }: { data: QuickNavItemProps[] }) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    marginVertical: 10,
+  },
+  separator: {
+    width: 10,
+  },
+});
 
 export default QuickNav;
