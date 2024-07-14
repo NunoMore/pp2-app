@@ -20,7 +20,7 @@ export function ThemedView({
 
   return (
     <View
-      style={[{ backgroundColor, padding: 20, flex: 1 }, style]}
+      style={[{ backgroundColor, paddingHorizontal: 40, flex: 1 }, style]}
       {...otherProps}
     />
   );

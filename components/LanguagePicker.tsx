@@ -40,6 +40,7 @@ const LanguagePicker = () => {
         anchorPosition="bottom"
         visible={visible}
         onDismiss={handlePress}
+        style={styles.menu}
         anchor={
           <TouchableOpacity onPress={handlePress} style={styles.button}>
             <ThemedText>{getSelectedLanguageText()}</ThemedText>
@@ -62,7 +63,11 @@ const LanguagePicker = () => {
 };
 
 const styles = StyleSheet.create({
+  menu: {
+    marginVertical: 10,
+  },
   button: {
+    flex: 1,
     paddingLeft: 5,
     borderRadius: 10,
     minWidth: 30,

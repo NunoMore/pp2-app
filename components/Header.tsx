@@ -19,14 +19,14 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    // maxHeight: 100,
+    flex: 1,
+    maxHeight: 100,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
   },
   rightView: {
     flexDirection: "row",
-    justifyContent: "space-between",
   },
 });
 

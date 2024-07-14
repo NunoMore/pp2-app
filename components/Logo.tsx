@@ -1,7 +1,13 @@
 import { Screens } from "@/constants/Screens";
 import { router } from "expo-router";
-import React from "react";
-import { Image, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  Dimensions,
+  Image,
+  Pressable,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 export default function Logo() {
   const handleLogoPress = () => {
@@ -9,16 +15,22 @@ export default function Logo() {
   };
 
   return (
-    <TouchableOpacity onPress={handleLogoPress}>
+    <TouchableOpacity onPress={handleLogoPress} style={styles.container}>
       <Image source={require("@/assets/images/pp2.png")} style={styles.image} />
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    maxWidth: "20%",
+    maxHeight: "100%",
+  },
   image: {
-    maxHeight: 178,
-    maxWidth: 290,
+    flex: 1,
+    aspectRatio: 1,
+    maxWidth: "100%",
     resizeMode: "contain",
   },
 });
