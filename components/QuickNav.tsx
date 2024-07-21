@@ -1,8 +1,16 @@
 import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import QuickNavItem, { QuickNavItemProps } from "./QuickNavItem";
+import { Button } from "react-native-paper";
 
-const QuickNav = ({ data }: { data: QuickNavItemProps[] }) => {
+interface QuickNavProps {
+  data: {
+    selected?: boolean;
+    title: string;
+    onPress: () => void;
+  }[];
+}
+
+const QuickNav = ({ data }: QuickNavProps) => {
   return (
     <View style={styles.container}>
       <FlatList
@@ -11,12 +19,14 @@ const QuickNav = ({ data }: { data: QuickNavItemProps[] }) => {
         ItemSeparatorComponent={() => <View style={styles.separator} />}
         showsVerticalScrollIndicator={false}
         showsHorizontalScrollIndicator={false}
-        renderItem={(item) => (
-          <QuickNavItem
-            key={item.index}
-            title={item.item.title}
-            onPress={item.item.onPress}
-          />
+        renderItem={({ item, index }) => (
+          <Button
+            key={index}
+            mode={item.selected ? "contained" : "outlined"}
+            onPress={item.onPress}
+          >
+            {item.title}
+          </Button>
         )}
       />
     </View>

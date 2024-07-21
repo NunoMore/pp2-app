@@ -13,7 +13,7 @@ const DisplayCard = ({ title, subtitle, imageUrl }: DisplayCardProps) => {
     <Card mode="elevated" style={styles.card}>
       <Card.Cover style={styles.image} source={{ uri: imageUrl }} />
       <Card.Title
-        style={{ position: "absolute" }}
+        style={styles.title}
         titleVariant="titleLarge"
         subtitleVariant="bodyMedium"
         title={title}
@@ -31,10 +31,15 @@ const styles = StyleSheet.create({
     marginRight: 10,
     marginVertical: 10,
   },
+  title: {
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    backgroundColor: "grey",
+    width: "100%",
+    position: "absolute",
+  },
   image: {
-    // zIndex: -1,
     minWidth: 150,
-    // marginHorizontal: 10,
   },
 });
 

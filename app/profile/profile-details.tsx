@@ -23,7 +23,7 @@ function ProfileDetails() {
   }, []);
 
   return (
-    <ThemedView>
+    <ThemedView style={{flex:1}}>
       {currentUser && (
         <>
           <ThemedText>Details</ThemedText>

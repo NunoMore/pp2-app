@@ -2,6 +2,7 @@ import { TabScreen, Tabs, TabsProvider } from "react-native-paper-tabs";
 import ProfileDetails from "./profile-details";
 import { Text } from "react-native-paper";
 import ProfileStatistics from "./profile-statistics";
+import ProfileVouchers from "./profile-vouchers";
 
 function Profile() {
   return (
@@ -17,7 +18,7 @@ function Profile() {
           <Text>Marketing</Text>
         </TabScreen>
         <TabScreen label="My Vouchers">
-          <Text>My vouchers</Text>
+          <ProfileVouchers />
         </TabScreen>
       </Tabs>
     </TabsProvider>

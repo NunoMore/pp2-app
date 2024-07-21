@@ -1,9 +1,7 @@
 import DisplayCard, { DisplayCardProps } from "@/components/DisplayCard";
-import QuickNav from "@/components/QuickNav/QuickNav";
-import { QuickNavItemProps } from "@/components/QuickNav/QuickNavItem";
+import QuickNav from "@/components/QuickNav";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
-import { sendAlert } from "@/utils/utils";
 import { useState } from "react";
 import {
   FlatList,
@@ -43,38 +41,77 @@ export default function Home() {
     },
   ];
 
-  const changeFilters = (filter: string) => {
-    if (filters.includes(filter)) {
-      const index = filters.indexOf(filter);
+  const changeFilters = (newFilter: string) => {
+    let newFilters = [...filters];
+    if (filters.includes(newFilter)) {
+      const index = filters.indexOf(newFilter);
       if (index > -1) {
-        setFilters([...filters].splice(index, 1));
+        newFilters.splice(index, 1);
+        setFilters(newFilters);
+        console.log("removed", newFilters);
       }
     } else {
+      newFilters = [...filters, newFilter];
+      console.log("added", newFilters);
+      setFilters([...filters, newFilter]);
     }
   };
 
-  const quickNavItems: QuickNavItemProps[] = [
+  const categories = ["Restaurantes", "Bares", "Hoteles", "Eventos", "Juega"];
+  const quickNavItems = [
     {
+      selected: filters.includes("Bares"),
       title: "Bares",
       onPress: () => changeFilters("Bares"),
     },
     {
+      selected: filters.includes("Hoteles"),
       title: "Hoteles",
-      onPress: () => sendAlert("Hoteles", "Hoteles"),
+      onPress: () => changeFilters("Hoteles"),
     },
     {
+      selected: filters.includes("Restaurantes"),
       title: "Restaurantes",
-      onPress: () => sendAlert("Restaurantes", "Restaurantes"),
+      onPress: () => changeFilters("Restaurantes"),
     },
     {
+      selected: filters.includes("Eventos"),
       title: "Eventos",
-      onPress: () => sendAlert("Eventos", "Eventos"),
+      onPress: () => changeFilters("Eventos"),
     },
     {
+      selected: filters.includes("Juega"),
       title: "Juega",
-      onPress: () => sendAlert("Juega", "Juega"),
+      onPress: () => changeFilters("Juega"),
     },
   ];
+
+  const sectionTitle = (text: string) => (
+    <ThemedText
+      style={{
+        display:
+          filters.length > 0 && !filters.includes(text) ? "none" : undefined,
+      }}
+    >
+      {text}
+    </ThemedText>
+  );
+
+  const sectionFlatList = (text: string) => (
+    <FlatList
+      data={data}
+      style={{
+        display:
+          filters.length > 0 && !filters.includes(text) ? "none" : undefined,
+      }}
+      renderItem={({ item: { title, subtitle, imageUrl } }) => (
+        <DisplayCard title={title} imageUrl={imageUrl} subtitle={subtitle} />
+      )}
+      horizontal
+      showsHorizontalScrollIndicator={false}
+    />
+  );
+
   return (
     <ImageBackground
       source={require("@/assets/images/bkg.avif")}
@@ -83,43 +120,12 @@ export default function Home() {
       <ThemedView>
         <QuickNav data={quickNavItems} />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <FlatList
-            data={data}
-            renderItem={({ item: { title, subtitle, imageUrl } }) => (
-              <DisplayCard
-                title={title}
-                imageUrl={imageUrl}
-                subtitle={subtitle}
-              />
-            )}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-          />
-          <ThemedText>another one</ThemedText>
-          <FlatList
-            data={data}
-            renderItem={({ item: { title, subtitle, imageUrl } }) => (
-              <DisplayCard
-                title={title}
-                imageUrl={imageUrl}
-                subtitle={subtitle}
-              />
-            )}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-          />
-          <FlatList
-            data={data}
-            renderItem={({ item: { title, subtitle, imageUrl } }) => (
-              <DisplayCard
-                title={title}
-                imageUrl={imageUrl}
-                subtitle={subtitle}
-              />
-            )}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-          />
+          {sectionTitle(categories[0])}
+          {sectionFlatList(categories[0])}
+          {sectionTitle(categories[1])}
+          {sectionFlatList(categories[1])}
+          {sectionTitle(categories[2])}
+          {sectionFlatList(categories[2])}
         </ScrollView>
       </ThemedView>
     </ImageBackground>
