@@ -14,8 +14,6 @@ const ProfileButton = () => {
 
   const handlePress = () => {
     Promise.resolve(Repo.read(RepoKeys.userLoggedIn)).then((user) => {
-      console.log(user);
-
       if (!user) router.navigate(Screens.Login);
       else router.navigate(Screens.Profile);
     });

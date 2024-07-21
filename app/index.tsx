@@ -48,11 +48,9 @@ export default function Home() {
       if (index > -1) {
         newFilters.splice(index, 1);
         setFilters(newFilters);
-        console.log("removed", newFilters);
       }
     } else {
       newFilters = [...filters, newFilter];
-      console.log("added", newFilters);
       setFilters([...filters, newFilter]);
     }
   };

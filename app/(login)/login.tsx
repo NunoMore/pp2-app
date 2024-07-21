@@ -32,7 +32,6 @@ export default function LoginScreen() {
       const existingUser = registeredUsers?.find(
         (user: { email: string }) => user.email === email.value
       );
-      console.log(existingUser);
 
       if (existingUser) {
         if (existingUser.password === password.value)

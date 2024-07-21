@@ -24,7 +24,6 @@ export default function Logo() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    maxWidth: "20%",
     maxHeight: "100%",
   },
   image: {

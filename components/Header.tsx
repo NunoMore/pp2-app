@@ -8,7 +8,9 @@ import LanguagePicker from "./LanguagePicker";
 const Header = () => {
   return (
     <ThemedView style={styles.container}>
-      <Logo />
+      <View style={styles.logoView}>
+        <Logo />
+      </View>
       <View style={styles.rightView}>
         <ProfileButton />
         <LanguagePicker />
@@ -23,8 +25,13 @@ const styles = StyleSheet.create({
     flex: 1,
     maxHeight: 100,
     flexDirection: "row",
+    gap: 100,
     justifyContent: "space-between",
     alignItems: "center",
+  },
+  logoView: {
+    flex: 1,
+    maxHeight: "80%",
   },
   rightView: {
     flexDirection: "row",
