@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { TextInput as Input } from "react-native-paper";
 import { ThemedText } from "./ThemedText";
 
@@ -10,11 +10,7 @@ export default function CustomTextInput({
 }: any) {
   return (
     <View style={styles.container}>
-      <Input
-        underlineColor="transparent"
-        mode="outlined"
-        {...props}
-      />
+      <Input underlineColor="transparent" mode="outlined" {...props} />
       {description && !errorText ? (
         <ThemedText style={styles.description}>{description}</ThemedText>
       ) : null}
@@ -28,7 +24,7 @@ export default function CustomTextInput({
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    marginVertical: 12,
+    marginVertical: 8,
   },
   description: {
     fontSize: 13,

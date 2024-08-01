@@ -31,6 +31,17 @@ export function passwordValidator(password: string) {
   return "";
 }
 
+export function phoneNumberValidator(number: string) {
+  if (!number) return "Country code and number are required";
+  if (!number.includes("+")) {
+    return "Invalid country code";
+  }
+  if (!/^\d{9,}$/.test(number.replace("+", "")))
+    return "Invalid phone number format";
+
+  return "";
+}
+
 export function sendAlert(title: string, message: string) {
   if (Platform.OS === "web") alert(message);
   else Alert.alert(title, message);

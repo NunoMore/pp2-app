@@ -23,14 +23,12 @@ function ProfileDetails() {
   }, []);
 
   return (
-    <ThemedView style={{flex:1}}>
-      {currentUser && (
-        <>
-          <ThemedText>Details</ThemedText>
-          <DetailsList data={currentUser} />
-        </>
-      )}
-    </ThemedView>
+    currentUser && (
+      <ThemedView>
+        <ThemedText>My details</ThemedText>
+        <DetailsList data={currentUser} />
+      </ThemedView>
+    )
   );
 }
 
