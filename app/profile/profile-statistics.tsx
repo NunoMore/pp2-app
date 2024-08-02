@@ -1,26 +1,43 @@
 import CustomChart from "@/components/CustomChart";
 import { ThemedView } from "@/components/ThemedView";
-import { ScrollView } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import { barDataItem } from "react-native-gifted-charts";
 
 function ProfileStatistics() {
   const chartData: barDataItem[] = [
-    { value: 0.7, label: "1" },
-    { value: 0.8, label: "2" },
-    { value: 0.6, label: "3" },
-    { value: 0.4, label: "4" },
-    { value: 0.9, label: "5" },
-    { value: 0.7, label: "6" },
+    { value: 700, label: "JAN" },
+    { value: 800, label: "FEB" },
+    { value: 600, label: "MAR" },
+    { value: 452, label: "APR" },
+    { value: 923, label: "MAY" },
+    { value: 234, label: "JUN" },
+    { value: 923, label: "JUL" },
+    { value: 239, label: "AGO" },
+    { value: 123, label: "SEP" },
+    { value: 823, label: "OCT" },
+    { value: 324, label: "NOV" },
+    { value: 123, label: "DEC" },
   ];
 
   return (
     <ThemedView>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <CustomChart type="pie" pieData={chartData} />
-        <CustomChart type="bar" barData={chartData} />
+      <ScrollView
+        contentContainerStyle={styles.graphs}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      >
+        <CustomChart title="Clicks" type="pie" pieData={chartData} />
+        <CustomChart title="Views" type="bar" barData={chartData} />
       </ScrollView>
     </ThemedView>
   );
 }
+
+const styles = StyleSheet.create({
+  graphs: {
+    // alignContent: "center",
+    alignItems: "center",
+  },
+});
 
 export default ProfileStatistics;

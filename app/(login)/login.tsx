@@ -34,9 +34,10 @@ export default function LoginScreen() {
       );
 
       if (existingUser) {
-        if (existingUser.password === password.value)
+        if (existingUser.password === password.value) {
+          Repo.update(RepoKeys.userLoggedIn, existingUser);
           router.navigate(Screens.Home);
-        else setPassword({ ...password, error: "Password is incorrect" });
+        } else setPassword({ ...password, error: "Password is incorrect" });
       } else
         setEmail({
           ...email,

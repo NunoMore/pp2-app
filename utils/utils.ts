@@ -36,7 +36,7 @@ export function phoneNumberValidator(number: string) {
   if (!number.includes("+")) {
     return "Invalid country code";
   }
-  if (!/^\d{9,}$/.test(number.replace("+", "")))
+  if (!/^\d{9,}$/.test(number.replace("+", "").replace(" ", "")))
     return "Invalid phone number format";
 
   return "";

@@ -2,14 +2,15 @@ import { StyleSheet, View } from "react-native";
 import {
   BarChart,
   barDataItem,
-  LineChart,
   PieChart,
   pieDataItem,
-  PopulationPyramid,
 } from "react-native-gifted-charts";
-import { Text } from "react-native-paper";
+import { ThemedText } from "./ThemedText";
+import { Colors } from "@/constants/Colors";
 
-interface BasicChartProps {}
+interface BasicChartProps {
+  title: string;
+}
 
 interface PieChartProps extends BasicChartProps {
   type: "pie";
@@ -26,6 +27,7 @@ const CustomChart = ({
   barData,
   pieData,
   type,
+  title,
 }: PieChartProps | BarChartProps) => {
   const chart = () => {
     switch (type) {
@@ -51,16 +53,23 @@ const CustomChart = ({
         return <PieChart data={pieData} showGradient />;
     }
   };
-  return <View style={styles.container}>{chart()}</View>;
+  return (
+    <View>
+      <ThemedText style={styles.title}>{title}</ThemedText>
+      <View style={styles.container}>{chart()}</View>
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
-    alignSelf: "center",
     borderRadius: 10,
     padding: 10,
     margin: 5,
+  },
+  title: {
+    // color: Colors.lightTheme.colors.text,
   },
 });
 
