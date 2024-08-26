@@ -5,4 +5,7 @@ export const Screens = {
   Login: "login",
   Register: "register",
   ResetPassword: "reset-password",
+  // Vouchers
+  VouchersEdit: "vouchers-edit",
+  VouchersRead: "vouchers-read",
 };

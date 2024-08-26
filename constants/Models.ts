@@ -1,17 +1,13 @@
-export class User {
+export interface User {
   username: string;
   email: string;
   password: string;
   phoneNumber: string;
-  constructor(
-    username: string,
-    email: string,
-    password: string,
-    phoneNumber: string
-  ) {
-    this.email = email;
-    this.username = username;
-    this.password = password;
-    this.phoneNumber = phoneNumber;
-  }
+}
+
+export interface Voucher {
+  code: string;
+  title: string;
+  discountValue: number;
+  backgroundImage: string;
 }

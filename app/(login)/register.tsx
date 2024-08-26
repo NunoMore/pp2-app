@@ -50,12 +50,12 @@ export default function RegisterScreen() {
         }
       } else registeredUsers = [];
 
-      const newUser = new User(
-        name.value,
-        email.value,
-        password.value,
-        phoneNumber.value
-      );
+      const newUser: User = {
+        email: email.value,
+        username: name.value,
+        password: password.value,
+        phoneNumber: phoneNumber.value,
+      };
       Repo.create(RepoKeys.registeredUsers, [...registeredUsers, newUser]);
       Repo.update(RepoKeys.userLoggedIn, newUser);
 

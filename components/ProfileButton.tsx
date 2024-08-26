@@ -1,4 +1,3 @@
-import { User } from "@/constants/Models";
 import { RepoKeys } from "@/constants/RepoKeys";
 import { Screens } from "@/constants/Screens";
 import Repo from "@/utils/repository";

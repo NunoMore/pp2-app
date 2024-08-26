@@ -1,6 +1,3 @@
-import { RepoKeys } from "@/constants/RepoKeys";
-import Repo from "./repository";
-import { User } from "@/constants/Models";
 import { Alert, Platform } from "react-native";
 
 export function isValidUrl(urlString: string): boolean {
@@ -45,4 +42,17 @@ export function phoneNumberValidator(number: string) {
 export function sendAlert(title: string, message: string) {
   if (Platform.OS === "web") alert(message);
   else Alert.alert(title, message);
+}
+
+export function generateRandomCode(baseText: string): string {
+  const characters =
+    "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  let randomCode = "";
+
+  for (let i = 0; i < 10; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    randomCode += characters[randomIndex];
+  }
+
+  return `${baseText}-${randomCode}`;
 }

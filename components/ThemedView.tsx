@@ -1,4 +1,4 @@
-import { View, type ViewProps } from "react-native";
+import { ScrollView, View, type ViewProps } from "react-native";
 
 import { useThemeColor } from "@/hooks/useThemeColor";
 
@@ -19,8 +19,12 @@ export function ThemedView({
   );
 
   return (
-    <View
-      style={[{ backgroundColor, paddingHorizontal: 40, flex: 1 }, style]}
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={[
+        { backgroundColor, paddingHorizontal: 40, flex: 1 },
+        style,
+      ]}
       {...otherProps}
     />
   );

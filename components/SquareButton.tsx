@@ -8,21 +8,23 @@ interface SquareButtonProps {
 
 const SquareButton = ({ text: title, onPress }: SquareButtonProps) => {
   return (
-    // <Card>
-    //   <Card.Title title={title} />
-    //   <Card.Actions>
-    <Button style={styles.button} mode="outlined" onPress={onPress}>
+    <Button
+      style={styles.buttonContainer}
+      contentStyle={styles.buttonContent}
+      mode="outlined"
+      onPress={onPress}
+    >
       {title}
     </Button>
-    //   </Card.Actions>
-    // </Card>
   );
 };
 
 const styles = StyleSheet.create({
-  button: {
+  buttonContainer: {
     margin: 10,
-    padding:"auto",
+  },
+  buttonContent: {
+    padding: "auto",
     height: 150,
     width: 150,
   },
