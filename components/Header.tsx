@@ -21,8 +21,10 @@ const Header = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#290827",
+    paddingTop: 10,
+    backgroundColor: "rgba(41, 8, 39, 1)",
     flex: 1,
+    bottom:0,
     maxHeight: 100,
     flexDirection: "row",
     gap: 100,

@@ -22,7 +22,7 @@ export function ThemedView({
     <ScrollView
       showsVerticalScrollIndicator={false}
       contentContainerStyle={[
-        { backgroundColor, paddingHorizontal: 40, flex: 1 },
+        { backgroundColor, paddingHorizontal: 40, paddingVertical: 40 },
         style,
       ]}
       {...otherProps}

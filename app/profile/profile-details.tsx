@@ -20,6 +20,24 @@ function ProfileDetails() {
   const [newUser, setNewUser] = useState<any>(currentUser);
   const [isEditing, setIsEditing] = useState(false);
 
+  const handleLogOutButton = () => {
+    Repo.update(RepoKeys.userLoggedIn, {});
+    setCurrentUser(undefined);
+  };
+
+  const handleEditSaveButton = () => {
+    setIsEditing(!isEditing);
+    if (isEditing) {
+      newUser &&
+        Repo.update(RepoKeys.userLoggedIn, newUser).then(() => {
+          Repo.read(RepoKeys.registeredUsers).then((users) => {
+            users = users.filter((obj: any) => obj.email !== newUser.email);
+            Repo.update(RepoKeys.registeredUsers, [...users, newUser]);
+          });
+        });
+    }
+  };
+
   useEffect(() => {
     Repo.read(RepoKeys.userLoggedIn)
       .then((user) => setCurrentUser(user))
@@ -38,20 +56,12 @@ function ProfileDetails() {
         <CustomButton
           mode="contained"
           label={isEditing ? "Save changes" : "Edit"}
-          onPress={() => {
-            setIsEditing(!isEditing);
-            if (isEditing) {
-              newUser &&
-                Repo.update(RepoKeys.userLoggedIn, newUser).then(() => {
-                  Repo.read(RepoKeys.registeredUsers).then((users) => {
-                    users = users.filter(
-                      (obj: any) => obj.email !== newUser.email
-                    );
-                    Repo.update(RepoKeys.registeredUsers, [...users, newUser]);
-                  });
-                });
-            }
-          }}
+          onPress={handleEditSaveButton}
+        />
+        <CustomButton
+          mode="elevated"
+          label="Log Out"
+          onPress={handleLogOutButton}
         />
       </ThemedView>
     )

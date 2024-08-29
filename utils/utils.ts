@@ -40,8 +40,8 @@ export function phoneNumberValidator(number: string) {
 }
 
 export function sendAlert(title: string, message: string) {
-  if (Platform.OS === "web") alert(message);
-  else Alert.alert(title, message);
+  if (isMobile()) Alert.alert(title, message);
+  else alert(message);
 }
 
 export function generateRandomCode(baseText: string): string {
@@ -55,4 +55,8 @@ export function generateRandomCode(baseText: string): string {
   }
 
   return `${baseText}-${randomCode}`;
+}
+
+export function isMobile(): boolean {
+  return Platform.OS === "android" || Platform.OS === "ios";
 }

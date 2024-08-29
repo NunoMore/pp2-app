@@ -2,10 +2,12 @@ import DisplayCard, { DisplayCardProps } from "@/components/DisplayCard";
 import QuickNav from "@/components/QuickNav";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { isMobile } from "@/utils/utils";
 import { useState } from "react";
 import {
   FlatList,
   ImageBackground,
+  Platform,
   ScrollView,
   StyleSheet,
 } from "react-native";
@@ -115,7 +117,11 @@ export default function Home() {
       source={require("@/assets/images/bkg.avif")}
       style={styles.background}
     >
-      <ThemedView>
+      <ThemedView
+        style={{
+          paddingTop: isMobile() ? "10%" : 0,
+        }}
+      >
         <QuickNav data={quickNavItems} />
         <ScrollView showsVerticalScrollIndicator={false}>
           {sectionTitle(categories[0])}
@@ -124,6 +130,10 @@ export default function Home() {
           {sectionFlatList(categories[1])}
           {sectionTitle(categories[2])}
           {sectionFlatList(categories[2])}
+          {sectionTitle(categories[3])}
+          {sectionFlatList(categories[3])}
+          {sectionTitle(categories[4])}
+          {sectionFlatList(categories[4])}
         </ScrollView>
       </ThemedView>
     </ImageBackground>
@@ -133,5 +143,6 @@ export default function Home() {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
+    height: "100%",
   },
 });

@@ -8,12 +8,7 @@ import { Platform, StyleSheet, View } from "react-native";
 
 const ProfileVouchers = () => {
   const handleEditVoucher = () => router.navigate(Screens.VouchersEdit);
-  const handleVerifyVoucher = () => {
-    if (Platform.OS !== "ios" && Platform.OS !== "android")
-      sendAlert("Verify Voucher", "Not available in web");
-    else router.navigate(Screens.VouchersRead);
-  };
-
+  const handleVerifyVoucher = () => router.navigate(Screens.VouchersRead);
   return (
     <ThemedView style={styles.container}>
       <View style={styles.buttonsContainer}>

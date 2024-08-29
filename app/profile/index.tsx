@@ -3,6 +3,8 @@ import ProfileDetails from "./profile-details";
 import { Text } from "react-native-paper";
 import ProfileStatistics from "./profile-statistics";
 import ProfileVouchers from "./profile-vouchers";
+import { LinearGradient } from "expo-linear-gradient";
+
 
 function Profile() {
   return (
@@ -12,7 +14,8 @@ function Profile() {
           <ProfileDetails />
         </TabScreen>
         <TabScreen label="Statistics">
-          <ProfileStatistics />
+          <></>
+          {/* <ProfileStatistics /> */}
         </TabScreen>
         <TabScreen label="Marketing">
           <Text>Marketing</Text>

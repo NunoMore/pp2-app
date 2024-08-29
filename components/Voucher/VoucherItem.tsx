@@ -1,15 +1,23 @@
 import { Voucher } from "@/constants/Models";
+import { sendAlert } from "@/utils/utils";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { List, IconButton, Button } from "react-native-paper";
 
 interface VoucherItemProps {
   voucher: Voucher;
-  onEdit: (voucher: Voucher) => void;
-  onDelete: (code: string) => void;
+  onUse?: () => void;
+  onEdit?: (voucher: Voucher) => void;
+  onDelete?: (code: string) => void;
 }
 
-const VoucherItem = ({ voucher, onEdit, onDelete }: VoucherItemProps) => {
+const VoucherItem = ({
+  voucher,
+  onUse,
+  onEdit,
+  onDelete,
+}: VoucherItemProps) => {
+  // todo: pass here the code to delete, edit, use
   return (
     <List.Item
       // onPress={() => onEdit(voucher)}
@@ -19,15 +27,31 @@ const VoucherItem = ({ voucher, onEdit, onDelete }: VoucherItemProps) => {
           {`Code: ${voucher.code}`}
           <br />
           {`${voucher.discountValue}% off`}
+          <br />
+          {!!voucher.used && "Voucher used!"}
         </>
       }
       right={() => (
         <>
-          <IconButton icon="pencil-outline" onPress={() => onEdit(voucher)} />
-          <IconButton
-            icon="trash-can-outline"
-            onPress={() => onDelete(voucher.code)}
-          />
+          {!!onUse && (
+            <IconButton
+              icon={voucher.used ? "playlist-check" : "playlist-remove"}
+              onPress={() =>
+                voucher.used
+                  ? sendAlert("Voucher", "Voucher already used")
+                  : onUse()
+              }
+            />
+          )}
+          {!!onEdit && (
+            <IconButton icon="pencil-outline" onPress={() => onEdit(voucher)} />
+          )}
+          {!!onDelete && (
+            <IconButton
+              icon="trash-can-outline"
+              onPress={() => onDelete(voucher.code)}
+            />
+          )}
         </>
       )}
     />

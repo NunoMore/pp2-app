@@ -6,6 +6,7 @@ export interface User {
 }
 
 export interface Voucher {
+  used: boolean;
   code: string;
   title: string;
   discountValue: number;
