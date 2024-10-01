@@ -1,0 +1,9 @@
+services:
+  pp2-app:
+    build: .
+    container_name: pp2-container
+    volumes:
+      - ./:/app
+    ports:
+      - "8081:8081"
+    command: npm run web
