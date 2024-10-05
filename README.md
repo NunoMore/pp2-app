@@ -29,7 +29,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     git push
    ```
    - this done for the branch "dev_css" will automatically trigger the action to deploy (number 5)
-   - you can verify the action in the ACTIONS tab in github. It should take less than a minute to deploy your changes
+   - you can verify the action in the ACTIONS tab in github. It should take 2 or 3 minutes to deploy your changes
 
 5. Deploy app (github pages)
 
