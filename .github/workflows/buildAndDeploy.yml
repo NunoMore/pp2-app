@@ -17,8 +17,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install
-        run: npm install
-
       - name: Deploy
-        run: npm run deploy
+        run: |
+          git config --global user.email $MY_EMAIL
+          git config --global user.name $MY_NAME
+          git remote set-url origin https://$MY_NAME:${{ secrets.MY_PASSWORD }}@github.com/$MY_NAME/pp2-app.git
+          npm install
+          npm run deploy
