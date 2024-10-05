@@ -20,11 +20,16 @@ jobs:
       - name: Install
         run: npm install
 
-      # - name: Define url
-      #   run: |
-      #     git config --global user.email ${{ vars.MY_EMAIL }}
-      #     git config --global user.name ${{ vars.MY_NAME }}
-      #     git remote set-url origin https://NunoMore:${{ secrets.MY_PASSWORD }}@github.com/NunoMore/pp2-app.git
+      - name: Use SSH Agent
+        uses: webdevops/ssh-agent@v1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Define url
+        run: |
+          git config --global user.email ${{ vars.MY_EMAIL }}
+          git config --global user.name ${{ vars.MY_NAME }}
+          git remote set-url origin git+ssh://git@github.com/NunoMore/pp2-app.git
 
       - name: Deploy
         run: npm run deploy
