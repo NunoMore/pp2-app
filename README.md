@@ -21,7 +21,17 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    - just press "w" for web browser
    - alternatively for ios or android testing, [`download Expo Go app`](https://expo.dev/go) and scan the QR code provided before by "npm start"
 
-4. Deploy app (github pages)
+4. Add changes
+   
+   ```bash
+    git commit -m "some message"
+    git add .
+    git push
+   ```
+   - this done for the branch "dev_css" will automatically trigger the action to deploy (number 5)
+   - you can verify the action in the ACTIONS tab in github. It should take less than a minute to deploy your changes
+
+5. Deploy app (github pages)
 
    ```bash
     npm run deploy
