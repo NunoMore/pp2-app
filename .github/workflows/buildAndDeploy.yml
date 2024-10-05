@@ -16,7 +16,7 @@ jobs:
       - name: Install and Export
         run: |
           npm install
-          npm run expo export -p web
+          npm run predeploy
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
