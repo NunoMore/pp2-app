@@ -21,6 +21,14 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    - just press "w" for web browser
    - alternatively for ios or android testing, [`download Expo Go app`](https://expo.dev/go) and scan the QR code provided before by "npm start"
 
+4. Deploy app (github pages)
+
+   ```bash
+    npm run deploy
+   ```
+   - note that it needs to finish a github action first.
+   - you can see the code here: [pp2-app](https://nunomore.github.io/pp2-app/)
+
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:
