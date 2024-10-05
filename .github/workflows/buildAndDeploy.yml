@@ -20,10 +20,10 @@ jobs:
       - name: Install
         run: npm install
 
-      - name: Use SSH Agent
-        uses: webdevops/ssh-agent@v1
-        with:
-          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+      # - name: Use SSH Agent
+      #   uses: webdevops/ssh-agent@v1
+      #   with:
+      #     ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Define url
         run: |
