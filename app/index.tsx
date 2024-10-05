@@ -114,7 +114,7 @@ export default function Home() {
 
   return (
     <ImageBackground
-      source={require("@/assets/images/bkg.avif")}
+      source={require("@/assets/images/bkg.jpg")}
       style={styles.background}
     >
       <ThemedView
