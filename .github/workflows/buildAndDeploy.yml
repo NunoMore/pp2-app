@@ -16,12 +16,13 @@ jobs:
       - name: Install and Export
         run: |
           npm install
-          expo export -p web
+          npm run expo export -p web
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
+          ssh-key: ${{ secrets.DEPLOY_KEY }}
 
       # - name: Define url
       #   run: |
