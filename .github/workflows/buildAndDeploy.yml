@@ -21,7 +21,9 @@ jobs:
         run: npm install
 
       - name: Define email
-        run: git config --global user.email $MY_EMAIL
+        run: | 
+          echo $MY_EMAIL
+          git config --global user.email $MY_EMAIL
 
       - name: Define user
         run: git config --global user.name $MY_NAME
