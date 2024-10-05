@@ -20,9 +20,14 @@ jobs:
       - name: Install
         run: npm install
 
+      - name: Define email
+        run: git config --global user.email $MY_EMAIL
+
+      - name: Define user
+        run: git config --global user.name $MY_NAME
+
+      - name: Define url
+        run: git remote set-url origin https://$MY_NAME:${{ secrets.MY_PASSWORD }}@github.com/NunoMore/pp2-app.git
+
       - name: Deploy
-        run: |
-          git config --global user.email $MY_EMAIL
-          git config --global user.name $MY_NAME
-          git remote set-url origin https://$MY_NAME:${{ secrets.MY_PASSWORD }}@github.com/$MY_NAME/pp2-app.git
-          npm run deploy
+        run: npm run deploy
