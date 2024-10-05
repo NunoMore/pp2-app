@@ -24,10 +24,10 @@ jobs:
         run: echo "heloooooooooooooooooo"
 
       - name: Echo variables
-        run: echo "$MY_NAME"
+        run: echo "my name is ${{ vars.MY_NAME }}"
 
       - name: Echo variables mail
-        run: echo "$MY_EMAIL"
+        run: echo "my email is $MY_EMAIL"
 
       - name: Define email
         run: git config --global user.email $MY_EMAIL
