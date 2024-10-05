@@ -20,6 +20,9 @@ jobs:
       - name: Install
         run: npm install
 
+      - name: Random echo
+        run: echo "heloooooooooooooooooo"
+
       - name: Echo variables
         run: echo "$MY_NAME"
 
