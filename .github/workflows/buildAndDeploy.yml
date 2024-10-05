@@ -20,10 +20,14 @@ jobs:
       - name: Install
         run: npm install
 
+      - name: Echo variables
+        run: echo $MY_NAME
+
+      - name: Echo variables mail
+        run: echo $MY_EMAIL
+
       - name: Define email
-        run: | 
-          echo $MY_EMAIL
-          git config --global user.email $MY_EMAIL
+        run: git config --global user.email $MY_EMAIL
 
       - name: Define user
         run: git config --global user.name $MY_NAME
