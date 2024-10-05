@@ -1,10 +1,6 @@
-# This is a basic workflow to help you get started with Actions
-
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: ["dev_css"]
 
@@ -17,19 +13,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install
-        run: npm install
-
-      # - name: Use SSH Agent
-      #   uses: webdevops/ssh-agent@v1
-      #   with:
-      #     ssh-private-key: ${{ secrets.DEPLOY_KEY }}
-
-      - name: Define url
+      - name: Install and Export
         run: |
-          git config --global user.email ${{ vars.MY_EMAIL }}
-          git config --global user.name ${{ vars.MY_NAME }}
-          git remote set-url origin git+ssh://git@github.com/NunoMore/pp2-app.git
+          npm install
+          expo export -p web
 
-      - name: Deploy
-        run: npm run deploy
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+
+      # - name: Define url
+      #   run: |
+      #     git config --global user.email ${{ vars.MY_EMAIL }}
+      #     git config --global user.name ${{ vars.MY_NAME }}
+      #     git remote set-url origin git+ssh://git@github.com/NunoMore/pp2-app.git
+
+      # - name: Deploy
+      #   run: npm run deploy
