@@ -61,7 +61,7 @@ export default function Home() {
   const quickNavItems = [
     {
       selected: filters.includes("Bares"),
-      title: "2112",
+      title: "Bares",
       onPress: () => changeFilters("Bares"),
     },
     {
